@@ -743,7 +743,7 @@ namespace tesseract {
     }
     
     NSString *path = [self.absoluteDataPath stringByAppendingPathComponent:@"tessdata"];
-    tesseract::TessPDFRenderer *renderer = new tesseract::TessPDFRenderer(path.fileSystemRepresentation);
+    tesseract::TessPDFRenderer *renderer = new tesseract::TessPDFRenderer(NULL, path.fileSystemRepresentation);
     
     // Begin producing output
     const char* kUnknownTitle = "Unknown Title";
@@ -777,7 +777,7 @@ namespace tesseract {
     
     const char *pdfData = NULL;
     int pdfDataLength = 0;
-    renderer->GetOutput(&pdfData, &pdfDataLength);
+//    renderer->GetOutput(&pdfData, &pdfDataLength);
     
     NSData *data = [NSData dataWithBytes:pdfData length:pdfDataLength];
     return data;
